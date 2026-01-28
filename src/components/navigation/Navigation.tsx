@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -19,9 +20,20 @@ const navLinks = [
 export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const activeSection = useActiveSection();
+    const router = useRouter();
+    const pathname = usePathname();
 
     const scrollToSection = (href: string) => {
         const sectionId = href.replace("#", "");
+
+        // If we're not on the home page, navigate to home page with hash
+        if (pathname !== "/") {
+            router.push(`/${href}`);
+            setIsMobileMenuOpen(false);
+            return;
+        }
+
+        // If we're on home page, scroll to section
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
@@ -58,8 +70,8 @@ export default function Navigation() {
                                     )}
                                     <span
                                         className={`relative z-10 ${isActive
-                                                ? "text-void-black font-bold"
-                                                : "text-white/70 hover:text-white"
+                                            ? "text-void-black font-bold"
+                                            : "text-white/70 hover:text-white"
                                             }`}
                                     >
                                         {link.name}
@@ -119,8 +131,8 @@ export default function Navigation() {
                                             transition={{ delay: index * 0.05 }}
                                             onClick={() => scrollToSection(link.href)}
                                             className={`relative px-6 py-3 rounded-full font-formula text-lg font-medium uppercase tracking-wide text-left transition-all ${isActive
-                                                    ? "bg-gradient-to-r from-neuron-gold to-electric-indigo text-void-black font-bold"
-                                                    : "text-white/70 hover:text-white hover:bg-white/5"
+                                                ? "bg-gradient-to-r from-neuron-gold to-electric-indigo text-void-black font-bold"
+                                                : "text-white/70 hover:text-white hover:bg-white/5"
                                                 }`}
                                         >
                                             {link.name}

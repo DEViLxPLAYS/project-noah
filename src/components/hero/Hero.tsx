@@ -9,8 +9,7 @@ export default function Hero() {
             <HeroGeometric
                 badge=""
                 title1="Noah Merriby"
-                title2="2CC - 7 Figure Club - 250K+ Students
-                "
+                title2="2CC - 7 Figure Club - 250K+ Students"
             >
                 {/* CTA Button */}
                 <div className="mt-8 flex justify-center items-center">

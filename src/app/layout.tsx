@@ -23,16 +23,29 @@ export const metadata: Metadata = {
     description: "Noah Merriby — author of Why The F*ck Do We Exist, founder of Lurnus Academy (100k+ students), and Merriby Real Estate (Dubai). Courses, books & investment advisory.",
     keywords: ["Noah Merriby", "Speaker", "Author", "Educator", "Real Estate Dubai", "Neuroplasticity", "Purpose"],
     authors: [{ name: "Noah Merriby" }],
+    icons: {
+        icon: "/icon.png",
+        apple: "/apple-icon.png",
+    },
     openGraph: {
         title: "Noah Merriby — State of Creation",
         description: "Author, Educator, Speaker & Real Estate Leader",
         type: "website",
         siteName: "State of Creation",
+        images: [
+            {
+                url: "/icon.png",
+                width: 512,
+                height: 512,
+                alt: "Noah Merriby",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "Noah Merriby — State of Creation",
         description: "Author, Educator, Speaker & Real Estate Leader",
+        images: ["/icon.png"],
     },
 };
 
