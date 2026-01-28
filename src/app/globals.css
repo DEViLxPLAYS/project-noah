@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-void-black: #050505;
+    --color-neuron-gold: #D4AF37;
+    --color-electric-indigo: #4B0082;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+body {
+    background-color: var(--color-void-black);
+    color: #ffffff;
+    font-family: var(--font-satoshi), sans-serif;
+    overflow-x: hidden;
+}
+
+/* Smooth scroll will be handled by Lenis */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Custom utilities */
+@layer utilities {
+    .text-stroke {
+        -webkit-text-stroke: 1px currentColor;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gpu-accelerated {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+
+    .glassmorphism {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
